@@ -34,7 +34,7 @@ jobs:
           python app.py &
           sleep 5
 
-      # 3. DAST - OWASP ZAP (через Docker с прямым генерированием HTML)
+      # 3. DAST - OWASP ZAP
       - name: Run OWASP ZAP (DAST)
         run: |
           docker run --net=host -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-baseline.py -t http://127.0.0.1:5000/api/users -r zap-report.html || true
